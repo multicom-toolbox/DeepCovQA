@@ -281,9 +281,9 @@ foreach $len (keys %len_seq)
 	system("python $GLOBAL_PATH/scripts/DN_package/predict_score.py  $len_tmpdir/model.list   $len_tmpdir/ALL_scores/ $len_tmpdir/predictions/");	
 	
 	
-	
-	print("perl $GLOBAL_PATH/scripts/P4_convert_partial2full.pl  $len_tmpdir/predictions/testing_iterative_local_prediction_int5.txt  $len_model_dir_noreindex $seqfile    $dir_output/modLen_$len.predictions\n\n");
-	system("perl $GLOBAL_PATH/scripts/P4_convert_partial2full.pl  $len_tmpdir/predictions/testing_iterative_local_prediction_int5.txt  $len_model_dir_noreindex $seqfile    $dir_output/modLen_$len.predictions");
+	#### average three methods
+	print("perl $GLOBAL_PATH/scripts/P4_convert_partial2full.pl  $len_tmpdir/predictions/local_prediction_InteractQA.txt  $len_model_dir_noreindex $seqfile    $dir_output/modLen_$len.predictions\n\n");
+	system("perl $GLOBAL_PATH/scripts/P4_convert_partial2full.pl  $len_tmpdir/predictions/local_prediction_InteractQA.txt  $len_model_dir_noreindex $seqfile    $dir_output/modLen_$len.predictions");
 
 	
 	

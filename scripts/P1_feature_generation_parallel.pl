@@ -381,7 +381,7 @@ for ($i = 0; $i < @tools; $i++)
 			  `cp $dir_output/ALL_scores/$targetname.fasta.acc  $ren_acc`;
 			}else{
 			
-			   print "Failed to find $dir_output/ALL_scores/$targetname.fea_aa_ss_sa or $dir_output/ALL_scores/$targetname.fasta.ss or $dir_output/ALL_scores/$targetname.fasta.acc\n\n";
+			   #print "Failed to find $dir_output/ALL_scores/$targetname.fea_aa_ss_sa or $dir_output/ALL_scores/$targetname.fasta.ss or $dir_output/ALL_scores/$targetname.fasta.acc\n\n";
 				
 			   $cmd = "perl $H_script/gen_feature_multi.pl  $fasta_seq   $aa_ss_sa  $aa_ss_sa/${targetname}_ss_sa.fea $GLOBAL_PATH $H_tool/SCRATCH-1D_1.1/";
 			   
@@ -508,7 +508,7 @@ for ($i = 0; $i < @tools; $i++)
 				
 			   $cmd = "$H_tool/DeepQA/bin/DeepQA.sh  $fasta_seq    $models_DeepQA $ren_DeepQA_features";
 			   $OUT = new FileHandle ">$res";
-			   $OUT->close();
+			   
 			   
 			   if(!(-e $score_deepqa))
 			   {
@@ -530,7 +530,7 @@ for ($i = 0; $i < @tools; $i++)
 						exit 0;
 					}
 				}
-				
+				$OUT->close();
 			   if(-e $score_deepqa)
 			   {
 				   $cmd = "perl $H_script/P1_generate_DeepQA_energy_feature.pl  $ren_DeepQA_features  $fasta_seq  $ren_DeepQA_features";
