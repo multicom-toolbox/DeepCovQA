@@ -142,6 +142,6 @@ perl ./scripts/P1_run_features_for_rosetta_energy.pl ./test/T0709  ./scripts/run
 ```
 
 **(I)  Run DeepCovQA**
-source /home/casp13/python_virtualenv/bin/activate
-perl scripts/run_DeepCovQA.pl  T0709 test/T0709.fasta test/T0709  ~/test/T0709_out/
+
+sh bin/run_DeepCovQA.sh  T0709 test/T0709.fasta test/T0709  ~/test/T0709_out/
 
