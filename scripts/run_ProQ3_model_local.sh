@@ -13,7 +13,7 @@ output_dir=${3%/}
 
 GLOBAL_PATH='/home/jh7x3/DeepCov_QA/Github/DeepCovQA/';
 
-#source /home/casp13/Human_QA_package/scripts/python_lib/HUMANqa_python_env/bin/activate
+source $GLOBAL_PATH/python_virtualenv_qa_keras2/bin/activate
 export LD_LIBRARY_PATH=$GLOBAL_PATH/tools/DeepQA/libs:$LD_LIBRARY_PATH
 export PATH=$GLOBAL_PATH/tools/EMBOSS-6.6.0/bin/:$PATH
 export LD_LIBRARY_PATH=$GLOBAL_PATH/tools/EMBOSS-6.6.0/lib/:$LD_LIBRARY_PATH
