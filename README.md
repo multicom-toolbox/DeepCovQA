@@ -157,6 +157,6 @@ perl ./scripts/P1_run_features_for_rosetta_energy.pl ./test/T0709  ./scripts/run
 ```
 
 **(I)  Run DeepCovQA**
-
+```
 sh bin/run_DeepCovQA.sh  T0709 test/T0709.fasta test/T0709  ~/test/T0709_out/
-
+```
