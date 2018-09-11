@@ -19,8 +19,11 @@ mkdir DeepCovQA
 Download the DeepCovQA code:
 ```
 cd ~/DeepCovQA/
-wget http://sysbio.rnet.missouri.edu/bdm_download/DeepCovQA.tar.gz
-tar zxvf DeepCovQA.tar.gz
+wget http://sysbio.rnet.missouri.edu/bdm_download/DeepCovQA_source_code.tar.gz
+tar zxvf DeepCovQA_source_code.tar.gz
+mv DeepCovQA_source_code/* ./
+rm -rf DeepCovQA_source_code
+
 # Alternately
 git clone https://github.com/multicom-toolbox/DeepCovQA.git
 ```
@@ -38,6 +41,7 @@ tar -zxf tools.tar.gz
 
 (a) Create python virtual environment (if not installed)
 ```
+cd ~/DeepCovQA/  
 virtualenv ~/python_virtualenv_qa
 source ~/python_virtualenv_qa/bin/activate
 pip install --upgrade pip
@@ -70,6 +74,17 @@ pip install h5py
 }
 ```
 
+(e) Create keras version2
+```
+cd ~/DeepCovQA/  
+virtualenv ~/python_virtualenv_qa_keras2
+source ~/python_virtualenv_qa_keras2/activate
+pip install --upgrade pip
+pip install numpy
+pip install h5py
+pip install keras
+pip install Theano
+```
 
 **(F) Install EMBOSS-6.6.0**  
 ```
