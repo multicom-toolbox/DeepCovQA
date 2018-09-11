@@ -141,5 +141,7 @@ cd ~/DeepCovQA/
 perl ./scripts/P1_run_features_for_rosetta_energy.pl ./test/T0709  ./scripts/run_ProQ3_model_local.sh T0709  ./test/T0709_out/rosetta
 ```
 
-**(I)  Verify DeepCovQA scripts**
+**(I)  Run DeepCovQA**
+source /home/casp13/python_virtualenv/bin/activate
+perl scripts/run_DeepCovQA.pl  T0709 test/T0709.fasta test/T0709  ~/test/T0709_out/
 
