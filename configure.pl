@@ -59,7 +59,7 @@ if (prompt_yn("DeepCovQA will be installed into <$install_dir> ")){
 print "Start install DeepCovQA into <$install_dir>\n";
 
 
-$files		="scripts/run_DeepCovQA.pl,scripts/P1_feature_generation_parallel.pl,scripts/run_ProQ3_model_local.sh,tools/proq3/paths.sh,tools/proq3/bin/run_all_external.pl,tools/predisorder1.1/configure.pl,scripts/DN_package/predict_score.py";
+$files		="bin/run_DeepCovQA.sh,tools/proq3/run_ProQ3_model.sh,scripts/run_DeepCovQA.pl,scripts/P1_feature_generation_parallel.pl,scripts/run_ProQ3_model_local.sh,tools/proq3/paths.sh,tools/proq3/bin/run_all_external.pl,tools/predisorder1.1/configure.pl,scripts/DN_package/predict_score.py";
 
 @updatelist		=split(/,/,$files);
 
