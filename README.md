@@ -42,8 +42,8 @@ tar -zxf tools.tar.gz
 (a) Create python virtual environment (if not installed)
 ```
 cd ~/DeepCovQA/  
-virtualenv ~/python_virtualenv_qa
-source ~/python_virtualenv_qa/bin/activate
+virtualenv python_virtualenv_qa
+source python_virtualenv_qa/bin/activate
 pip install --upgrade pip
 ```
 
@@ -77,8 +77,8 @@ pip install h5py
 (e) Create keras version2
 ```
 cd ~/DeepCovQA/  
-virtualenv ~/python_virtualenv_qa_keras2
-source ~/python_virtualenv_qa_keras2/activate
+virtualenv python_virtualenv_qa_keras2
+source python_virtualenv_qa_keras2/activate
 pip install --upgrade pip
 pip install numpy
 pip install h5py
