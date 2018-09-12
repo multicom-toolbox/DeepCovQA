@@ -78,7 +78,7 @@ pip install h5py
 ```
 cd ~/DeepCovQA/  
 virtualenv python_virtualenv_qa_keras2
-source python_virtualenv_qa_keras2/activate
+source python_virtualenv_qa_keras2/bin/activate
 pip install --upgrade pip
 pip install numpy
 pip install h5py
