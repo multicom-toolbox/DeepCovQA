@@ -280,10 +280,12 @@ foreach $len (keys %len_seq)
 	print("python $GLOBAL_PATH/scripts/DN_package/predict_score.py  $len_tmpdir/model.list   $len_tmpdir/ALL_scores/ $len_tmpdir/predictions/\n\n");	
 	system("python $GLOBAL_PATH/scripts/DN_package/predict_score.py  $len_tmpdir/model.list   $len_tmpdir/ALL_scores/ $len_tmpdir/predictions/");	
 	
-	
+	print("perl $GLOBAL_PATH/scripts/P6_average_three_methods_local_prediction.pl $len_tmpdir/predictions/local_prediction_InteractQA.txt  $len_tmpdir/predictions/local_prediction_JointQA.txt $len_tmpdir/predictions/local_prediction_LocalQA.txt $len_tmpdir/predictions/local_prediction_AverageQA.txt\n");
+	system("perl $GLOBAL_PATH/scripts/P6_average_three_methods_local_prediction.pl $len_tmpdir/predictions/local_prediction_InteractQA.txt  $len_tmpdir/predictions/local_prediction_JointQA.txt $len_tmpdir/predictions/local_prediction_LocalQA.txt $len_tmpdir/predictions/local_prediction_AverageQA.txt");
+
 	#### average three methods
-	print("perl $GLOBAL_PATH/scripts/P4_convert_partial2full.pl  $len_tmpdir/predictions/local_prediction_InteractQA.txt  $len_model_dir_noreindex $seqfile    $dir_output/modLen_$len.predictions\n\n");
-	system("perl $GLOBAL_PATH/scripts/P4_convert_partial2full.pl  $len_tmpdir/predictions/local_prediction_InteractQA.txt  $len_model_dir_noreindex $seqfile    $dir_output/modLen_$len.predictions");
+	print("perl $GLOBAL_PATH/scripts/P4_convert_partial2full.pl  $len_tmpdir/predictions/local_prediction_AverageQA.txt  $len_model_dir_noreindex $seqfile    $dir_output/modLen_$len.predictions\n\n");
+	system("perl $GLOBAL_PATH/scripts/P4_convert_partial2full.pl  $len_tmpdir/predictions/local_prediction_AverageQA.txt  $len_model_dir_noreindex $seqfile    $dir_output/modLen_$len.predictions");
 
 	
 	

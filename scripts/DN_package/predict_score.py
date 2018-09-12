@@ -17,7 +17,7 @@ feature_dir=sys.argv[2]  #
 output_dir=sys.argv[3]
 
 import time
-from model_evaluation import predict_local,predict_global,predict_local_global
+from model_evaluation import predict_local,predict_local_global_joint
 
 method_list = ['LocalQA','InteractQA','JointQA']
 weight_dir =GLOBAL_PATH+'/scripts/DN_package/models/'
@@ -30,4 +30,9 @@ for method in method_list:
     outputfile=output_dir+'/local_prediction_'+str(method)+'.txt'
     logfile=output_dir+'/local_prediction_'+str(method)+'.log'
     test_list=data_file
-    predict_local(test_list,feature_dir,model_in,model_weight_in,outputfile,logfile)
+    
+    if method is 'JointQA':
+        predict_local_global_joint(test_list,feature_dir,model_in,model_weight_in,outputfile,logfile)
+    else:    
+        predict_local(test_list,feature_dir,model_in,model_weight_in,outputfile,logfile)
+    
