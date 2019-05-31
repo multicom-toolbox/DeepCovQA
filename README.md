@@ -100,7 +100,7 @@ make install
 
 (a) Update the following variables in the script './configure.pl'
 ```
-$R_SCRIPT="/home/tools/R-3.1.1/bin/Rscript";
+$R_SCRIPT="/usr/bin/Rscript";
 ```
 If you don't have "zoo" package, install it by launching R and typing install.packages("zoo")
 
