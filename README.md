@@ -89,7 +89,7 @@ pip install Theano
 ```
 cd ~/DeepCovQA/
 cd tools
-cd EMBOSS-6.6.
+cd EMBOSS-6.6.0
 ./configure --prefix=./
 make
 make install
