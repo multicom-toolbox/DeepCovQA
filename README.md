@@ -19,7 +19,7 @@ mkdir DeepCovQA
 Download the DeepCovQA code:
 ```
 cd ~/DeepCovQA/
-wget http://sysbio.rnet.missouri.edu/bdm_download/DeepCovQA_source_code.tar.gz
+wget http://sysbio.rnet.missouri.edu/bdm_download/DeepCovQA/DeepCovQA_source_code.tar.gz
 tar zxvf DeepCovQA_source_code.tar.gz
 mv DeepCovQA_source_code/* ./
 rm -rf DeepCovQA_source_code
