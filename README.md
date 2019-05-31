@@ -122,22 +122,22 @@ perl ./configure.pl
 (a) Secondary structure prediction
 ```
 cd ~/DeepCovQA/  
-
+mkdir -p  test/T0709_out/aa_ss_sa
 perl ./scripts/gen_feature_multi.pl ./test/T0709.fasta   ./test/T0709_out/aa_ss_sa  ./test/T0709_out/aa_ss_sa/T0709_ss_sa.fea ./ ./tools/SCRATCH-1D_1.1/
 ```
 
 (b) Disorder prediction
 ```
 cd ~/DeepCovQA/  
-
+mkdir -p  test/T0709_out/
 perl ./scripts/P1_runpredisorder.pl ./test/T0709.fasta ./tools/predisorder1.1/bin/predict_diso.sh ./test/T0709_out
 ```
 
 (c) PSSM prediction
 ```
 cd ~/DeepCovQA/  
-
-source ~/python_virtualenv_qa/bin/activate
+mkdir -p  test/T0709_out/pssm
+source python_virtualenv_qa/bin/activate
 perl ./scripts/split_fasta_to_folder.pl  ./test/T0709.fasta  ./test/T0709_out/pssm  ./test/T0709_out/pssm/PSSM.list
 python ./scripts/run_many_sequence.py --inputfile ./test/T0709_out/pssm//PSSM.list  --seqdir ./test/T0709_out/pssm/ --script_dir ./DeepCovQA/scripts/  --pspro_dir ./tools/DeepQA/tools/pspro2/  --nr_db ./tools/DeepQA/tools/nr/nr   --big_db ./tools/DeepQA/tools/sspro4/data/big/big_98_X  --outputdir ./DeepCovQA/test/T0709_out/pssm/
 ```
@@ -146,16 +146,18 @@ python ./scripts/run_many_sequence.py --inputfile ./test/T0709_out/pssm//PSSM.li
 
 ```
 cd ~/DeepCovQA/  
-
+mkdir -p  test/T0709_out/deepqa
 ./tools/DeepQA/bin/DeepQA.sh ./test/T0709.fasta ./test/T0709  ./test/T0709_out/deepqa
 ```
 
 (e) Rosetta Energy score
 ```
+mkdir -p  test/T0709_out/rosetta
 perl ./scripts/P1_run_features_for_rosetta_energy.pl ./test/T0709  ./scripts/run_ProQ3_model_local.sh T0709  ./test/T0709_out/rosetta
 ```
 
 **(I)  Run DeepCovQA**
 ```
+mkdir -p  test/T0709_out
 sh bin/run_DeepCovQA.sh  T0709 test/T0709.fasta test/T0709  ~/test/T0709_out/
 ```
