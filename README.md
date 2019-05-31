@@ -130,7 +130,7 @@ perl ./scripts/gen_feature_multi.pl ./test/T0709.fasta   ./test/T0709_out/aa_ss_
 ```
 cd ~/DeepCovQA/  
 mkdir -p  test/T0709_out/
-perl ./scripts/P1_runpredisorder.pl ./test/T0709.fasta ./tools/predisorder1.1/bin/predict_diso.sh ./test/T0709_out
+perl ./scripts/P1_runpredisorder.pl ./test/T0709.fasta ./tools/predisorder1.1/bin/predict_diso.sh ./test/T0709_out/T0709
 ```
 
 (c) PSSM prediction
