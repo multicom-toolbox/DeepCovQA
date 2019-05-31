@@ -31,7 +31,6 @@ git clone https://github.com/multicom-toolbox/DeepCovQA.git
 **(B) Download software package**  
 ```
 cd ~/DeepCovQA/  
-cd tools 
 wget http://sysbio.rnet.missouri.edu/bdm_download/DeepCovQA/tools.tar.gz
 tar -zxf tools.tar.gz
 ```
