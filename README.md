@@ -141,7 +141,7 @@ cd ~/DeepCovQA/
 mkdir -p  test/T0709_out/pssm
 source python_virtualenv_qa/bin/activate
 perl ./scripts/split_fasta_to_folder.pl  ./test/T0709.fasta  ./test/T0709_out/pssm  ./test/T0709_out/pssm/PSSM.list
-python ./scripts/run_many_sequence.py --inputfile ./test/T0709_out/pssm//PSSM.list  --seqdir ./test/T0709_out/pssm/ --script_dir ./scripts/  --pspro_dir ./tools/DeepQA/tools/pspro2/  --nr_db ./tools/DeepQA/tools/nr/nr   --big_db ./tools/DeepQA/tools/sspro4/data/big/big_98_X  --outputdir ./test/T0709_out/pssm/
+python ~/DeepCovQA/scripts/run_many_sequence.py --inputfile ~/DeepCovQA/test/T0709_out/pssm//PSSM.list  --seqdir ~/DeepCovQA/test/T0709_out/pssm/ --script_dir ~/DeepCovQA/scripts/  --pspro_dir ~/DeepCovQA/tools/DeepQA/tools/pspro2/  --nr_db ~/DeepCovQA/tools/DeepQA/tools/nr/nr   --big_db ~/DeepCovQA/tools/DeepQA/tools/sspro4/data/big/big_98_X  --outputdir ~/DeepCovQA/test/T0709_out/pssm/
 ```
 
 (d) Global energy score
