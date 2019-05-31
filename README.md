@@ -149,13 +149,13 @@ python ~/DeepCovQA/scripts/run_many_sequence.py --inputfile ~/DeepCovQA/test/T07
 ```
 cd ~/DeepCovQA/  
 mkdir -p  test/T0709_out/deepqa
-./tools/DeepQA/bin/DeepQA.sh ./test/T0709.fasta ./test/T0709  ./test/T0709_out/deepqa
+./tools/DeepQA/bin/DeepQA.sh ~/DeepCovQA/test/T0709.fasta ~/DeepCovQA/test/T0709  ~/DeepCovQA/test/T0709_out/deepqa
 ```
 
 (e) Rosetta Energy score
 ```
 mkdir -p  test/T0709_out/rosetta
-perl ./scripts/P1_run_features_for_rosetta_energy.pl ./test/T0709  ./scripts/run_ProQ3_model_local.sh T0709  ./test/T0709_out/rosetta
+perl ./scripts/P1_run_features_for_rosetta_energy.pl ~/DeepCovQA/test/T0709  ~/DeepCovQA/scripts/run_ProQ3_model_local.sh T0709  ~/DeepCovQA/test/T0709_out/rosetta
 ```
 
 **(I)  Run DeepCovQA**
