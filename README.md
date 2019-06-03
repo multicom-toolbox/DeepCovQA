@@ -164,5 +164,5 @@ perl ./scripts/P1_run_features_for_rosetta_energy.pl ~/DeepCovQA/test/T0709  ~/D
 **(I)  Run DeepCovQA**
 ```
 mkdir -p  test/T0709_out
-sh bin/run_DeepCovQA.sh  T0709 test/T0709.fasta test/T0709  ~/test/T0709_out/
+sh bin/run_DeepCovQA.sh  T0709 ~/DeepCovQA/test/T0709.fasta ~/DeepCovQA/test/T0709  ~/DeepCovQA/test/T0709_out/
 ```
