@@ -21,6 +21,6 @@ export LD_LIBRARY_PATH=$GLOBAL_PATH/tools/EMBOSS-6.6.0/lib/:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$GLOBAL_PATH/tools/rosetta_2014.16.56682_bundle/main/source/build/external/release/linux/2.6/64/x86/gcc/4.4/default//:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$GLOBAL_PATH/tools/rosetta_2014.16.56682_bundle/main/source/build/src/release/linux/2.6/64/x86/gcc/4.4/default/:$LD_LIBRARY_PATH
 
-echo "perl scripts/run_DeepCovQA.pl $targetid   $fasta  $model_dir  $outputfolder"				
-perl scripts/run_DeepCovQA.pl $targetid   $fasta  $model_dir  $outputfolder				
+echo "perl $GLOBAL_PATH/scripts/run_DeepCovQA.pl $targetid   $fasta  $model_dir  $outputfolder"				
+perl $GLOBAL_PATH/scripts/run_DeepCovQA.pl $targetid   $fasta  $model_dir  $outputfolder				
 
