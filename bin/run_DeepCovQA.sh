@@ -2,7 +2,7 @@
 # prediction file for protein quality assessment #
 if [ $# -lt 4 ]
 then
-	echo "need three parameters : path of fasta sequence, directory of input pdbs, directory of output"
+	echo "need four parameters : target_id, path of fasta sequence, directory of input pdbs, directory of output"
 	exit 1
 fi
 
