@@ -112,7 +112,11 @@ $R
 >q()
 ```
 We used R-3.1.1, which can be downloaded from https://cran.r-project.org/src/base/R-3/R-3.1.1.tar.gz
-
+```
+./configure  --prefix=/home/tools/R-3.1.1  --with-readline=no --with-x=no
+make
+make insatll
+```
 
 (b) Configure software
 
