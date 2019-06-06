@@ -113,6 +113,8 @@ $R
 ```
 We used R-3.2.0, which can be downloaded from https://cran.r-project.org/src/base/R-3/R-3.2.0.tar.gz
 ```
+cd /home/tools/
+wget https://cran.r-project.org/src/base/R-3/R-3.2.0.tar.gz
 cd /home/tools/R-3.2.0/
 ./configure  --prefix=/home/tools/R-3.2.0  --with-readline=no --with-x=no
 make
