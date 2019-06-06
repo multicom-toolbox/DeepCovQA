@@ -7,12 +7,12 @@
 ######################## !!! customize settings here !!! ############################
 #				
 
-$R_SCRIPT="/home/jh7x3/tools/R-3.1.1/bin/Rscript";
+$R_SCRIPT="/home/jh7x3/tools/R-3.2.0/bin/Rscript";
 -f $R_SCRIPT || die "$R_SCRIPT file doesn't exist.\n";
 
 
 
-# Set installation directory of DeepCovQA to your unzipped DeepCovQA directory            #
+# Set installation directory of CNNQA to your unzipped CNNQA directory            #
 
 $install_dir = getcwd;
 $install_dir=abs_path($install_dir);
@@ -21,7 +21,7 @@ $install_dir=abs_path($install_dir);
 
 if(!-s $install_dir)
 {
-	die "The DeepCovQA directory ($install_dir) is not existing, please revise the customize settings part inside the configure.pl, set the path as  your unzipped DeepCovQA directory\n";
+	die "The CNNQA directory ($install_dir) is not existing, please revise the customize settings part inside the configure.pl, set the path as  your unzipped CNNQA directory\n";
 }
 if ( substr($install_dir, length($install_dir) - 1, 1) ne "/" )
 {
@@ -34,7 +34,7 @@ chomp $cur_dir;
 $configure_file = "$cur_dir/configure.pl";
 if (! -f $configure_file || $install_dir ne "$cur_dir/")
 {
-        die "\nPlease check the installation directory setting and run the configure program in the installation directory of DeepCovQA.\n";
+        die "\nPlease check the installation directory setting and run the configure program in the installation directory of CNNQA.\n";
 }
 print " OK!\n";
 
@@ -51,15 +51,15 @@ if ( substr($install_dir, length($install_dir) - 1, 1) ne "/" )
 }
 
 
-if (prompt_yn("DeepCovQA will be installed into <$install_dir> ")){
+if (prompt_yn("CNNQA will be installed into <$install_dir> ")){
 
 }else{
 	die "The installation is cancelled!\n";
 }
-print "Start install DeepCovQA into <$install_dir>\n";
+print "Start install CNNQA into <$install_dir>\n";
 
 
-$files		="bin/run_DeepCovQA.sh,tools/proq3/run_ProQ3_model.sh,scripts/run_DeepCovQA.pl,scripts/P1_feature_generation_parallel.pl,scripts/run_ProQ3_model_local.sh,tools/proq3/paths.sh,tools/proq3/bin/run_all_external.pl,tools/predisorder1.1/configure.pl,scripts/DN_package/predict_score.py";
+$files		="bin/run_CNNQA.sh,tools/proq3/run_ProQ3_model.sh,scripts/run_CNNQA.pl,scripts/P1_feature_generation_parallel.pl,scripts/run_ProQ3_model_local.sh,tools/proq3/paths.sh,tools/proq3/bin/run_all_external.pl,tools/predisorder1.1/configure.pl,scripts/DN_package/predict_score.py";
 
 @updatelist		=split(/,/,$files);
 

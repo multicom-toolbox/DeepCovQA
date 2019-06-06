@@ -12,7 +12,7 @@
  sub filter_score($$);
 
 
-my $GLOBAL_PATH='/home/jh7x3/DeepCov_QA/Github/DeepCovQA/';
+my $GLOBAL_PATH='/home/jh7x3/bdm_github/CNNQA/';
 
 
 
@@ -179,10 +179,7 @@ if(-d $aa_ss_sa)
  $OUTLOG = new FileHandle ">$logfile";
  
  
-#!!!!!!!!!  1. Run my NOVEL server to get several scores ###   /home/rcrg4/Server/human_QA_casp11.pl
-$task_dir = $TMP_output;
-$name= $targetname;
-
+#!!!!!!!!!  1. Run my NOVEL server to get several scores ###
  
 ############## running all jobs #####################
 $ren_disorder=$TMP_output."/$targetname.disorder";
@@ -234,7 +231,7 @@ for ($i = 0; $i < @tools; $i++)
 			   
 			   $OUT = new FileHandle ">$res";
 			   print $OUT "1. generating disorder score\n   $cmd \n\n";
-			   print  "1. generating disorder score\n   $cmd \n\n";
+			   print  "1. generating disorder score\n\n";
 			   $OUT->close();
 			   $ren_return_val=system("$cmd &>> $res");
 				if ($ren_return_val)
@@ -262,7 +259,7 @@ for ($i = 0; $i < @tools; $i++)
 			  $cmd = "perl $GLOBAL_PATH/scripts/P1_generate_disorder_feature.pl $ren_disorder   $fasta_seq    $disorder_dir";
 			  $OUT = new FileHandle ">$res";
 			  print $OUT "1. generating disorder features\n   $cmd \n\n";
-			  print  "1. generating disorder features\n   $cmd \n\n";
+			  print  "1. generating disorder features\n\n";
 			  $OUT->close();
 			  system("$cmd &>> $res");
 			  
@@ -301,16 +298,16 @@ for ($i = 0; $i < @tools; $i++)
 			   $res = "$LOG_output/pssm.is_running";
 			   $OUT = new FileHandle ">$res";
 			   $cmd = "perl $H_script/split_fasta_to_folder.pl  $fasta_seq  $pssm_dir  $pssm_dir/PSSM.list";
-			   print("$cmd &>> $res\n");
+			   #print("$cmd &>> $res\n");
 			   system("$cmd &>> $res");
 			   
 			   $cmd = "python $H_script/run_many_sequence.py --inputfile $pssm_dir/PSSM.list  --seqdir $pssm_dir  --script_dir $H_script --pspro_dir $H_tool/DeepQA/tools/pspro2/  --nr_db $H_tool/DeepQA/tools/nr/nr   --big_db $H_tool/DeepQA/tools/sspro4/data/big/big_98_X  --outputdir $pssm_dir";
-			   print("$cmd &>> $res\n");
+			   #print("$cmd &>> $res\n");
 			   system("$cmd &>> $res");
 			   
 			   
 			   print $OUT "2. generating pssm score\n   $cmd \n\n";
-			   print  "2. generating pssm score\n   $cmd \n\n";
+			   print  "2. generating pssm score\n\n";
 			   $OUT->close();
 			   $ren_return_val=system("$cmd &>> $res");
 				if ($ren_return_val)
@@ -367,7 +364,7 @@ for ($i = 0; $i < @tools; $i++)
 			print TMP "pssm modeling finished within $pssm_diff_hrs hrs!\n\n";
 			close TMP;		
 			exit 0;
-		}elsif ($tool eq "aa_ss_sa") ### 4. generating aa_ss_sa score
+		}elsif ($tool eq "aa_ss_sa") ### 3. generating aa_ss_sa score
 		{
 			#run aa_ss_sa:
 			$res = "$LOG_output/aa_ss_sa.is_running";
@@ -375,7 +372,7 @@ for ($i = 0; $i < @tools; $i++)
 			$aa_ss_sa_starttime = time();
 			if(-e "$dir_output/ALL_scores/$targetname.fea_aa_ss_sa" and -e "$dir_output/ALL_scores/$targetname.fasta.ss" and -e "$dir_output/ALL_scores/$targetname.fasta.acc")
 			{
-			  print "4. $dir_output/ALL_scores/$targetname.fea_aa_ss_sa already generated! Pass\n\n";
+			  print "3. $dir_output/ALL_scores/$targetname.fea_aa_ss_sa already generated! Pass\n\n";
 			  `cp $dir_output/ALL_scores/$targetname.fea_aa_ss_sa  $ren_aa_ss_sa`;
 			  `cp $dir_output/ALL_scores/$targetname.fasta.ss  $ren_ss`;
 			  `cp $dir_output/ALL_scores/$targetname.fasta.acc  $ren_acc`;
@@ -387,7 +384,7 @@ for ($i = 0; $i < @tools; $i++)
 			   
 			   
 			   print $OUT "3. generating aa_ss_sa score\n   $cmd \n\n";
-			   print  "3. generating aa_ss_sa score\n   $cmd \n\n";
+			   print  "3. generating aa_ss_sa score\n\n";
 			   
 			   $ren_return_val=system("$cmd &>> $res");
 				if ($ren_return_val)
@@ -405,7 +402,7 @@ for ($i = 0; $i < @tools; $i++)
 					exit 0;
 				}
 				
-				print("perl $H_script/P3_extract_protein_feature_from_single_file.pl  $aa_ss_sa/${targetname}_ss_sa.fea $aa_ss_sa/\n\n");
+				#print("perl $H_script/P3_extract_protein_feature_from_single_file.pl  $aa_ss_sa/${targetname}_ss_sa.fea $aa_ss_sa/\n\n");
 				system("perl $H_script/P3_extract_protein_feature_from_single_file.pl  $aa_ss_sa/${targetname}_ss_sa.fea $aa_ss_sa/");
 
 				$aa_ss_sa_file = "$aa_ss_sa/$targetname.fea_aa_ss_sa";
@@ -449,25 +446,25 @@ for ($i = 0; $i < @tools; $i++)
 			}
 			$cmd ="perl  $H_script/P1_extract_ss_from_dssp.pl $models_dssp $tmp_ss_dir $H_tool/dsspcmbi  $H_script/dssp2dataset.pl  $fasta_seq    $ren_models_dssp_ss $H_script/model2seq.pl";
 			print $OUT "3.1. extract_ss_from_dssp\n   $cmd \n\n";
-			print  "3.1. extract_ss_from_dssp\n   $cmd \n\n";
+			print  "3.1. extract_ss_from_dssp\n\n";
 			
 			system("$cmd &>> $res");
 		   
 			$cmd ="perl  $H_script/P1_extract_sa_from_dssp.pl $models_dssp $tmp_sa_dir $H_tool/dsspcmbi  $H_script/dssp2dataset.pl  $fasta_seq  $ren_models_dssp_sa $H_script/model2seq.pl";
 			print $OUT "3.2. extract_sa_from_dssp\n   $cmd \n\n";
-			print  "3.2. extract_sa_from_dssp\n   $cmd \n\n";
+			print  "3.2. extract_sa_from_dssp\n\n";
 			
 			system("$cmd &>> $res");
 			
 			$cmd ="perl $H_script/P1_generate_ss_match_feature.pl   $ren_models_dssp_ss   $ren_ss  $ss_match_dir";
 			print $OUT "3.3. generate_ss_match_feature\n   $cmd \n\n";
-			print  "3.3. generate_ss_match_feature\n   $cmd \n\n";
+			print  "3.3. generate_ss_match_feature\n\n";
 			
 			system("$cmd &>> $res");
 			
 			$cmd ="perl $H_script/P1_generate_sa_match_feature.pl   $models_dssp   $fasta_seq  $ren_models_dssp_sa  $ren_acc  $sa_match_dir";
 			print $OUT "3.4. generate_sa_match_feature\n   $cmd \n\n";
-			print  "3.4. generate_sa_match_feature\n   $cmd \n\n";
+			print  "3.4. generate_sa_match_feature\n\n";
 			$OUT->close();
 			system("$cmd &>> $res");
 			
@@ -487,7 +484,7 @@ for ($i = 0; $i < @tools; $i++)
 			print TMP "aa_ss_sa modeling finished within $aa_ss_sa_diff_hrs hrs!\n\n";
 			close TMP;		
 			exit 0;
-		}elsif ($tool eq "DeepQA") ### 15. generating DeepQA score
+		}elsif ($tool eq "DeepQA") ### 4. generating DeepQA score
 		{
 			#run DeepQA:
 			$DeepQA_starttime = time();
@@ -499,7 +496,7 @@ for ($i = 0; $i < @tools; $i++)
 			
 			if(-e "$dir_output/ALL_scores/$targetname.deepqa_complete" and -d "$dir_output/ALL_scores/DeepQA_energy")
 			{
-			  print "15. $dir_output/ALL_scores/DeepQA_energy already generated! Pass\n\n";
+			  print "4. $dir_output/ALL_scores/DeepQA_energy already generated! Pass\n\n";
 			  #`cp -avr $dir_output/ALL_scores/DeepQA_energy  $ren_DeepQA_features`;
 			}else{
 			   $res = "$LOG_output/DeepQA.is_running";
@@ -512,14 +509,14 @@ for ($i = 0; $i < @tools; $i++)
 			   
 			   if(!(-e $score_deepqa))
 			   {
-				   print $OUT "15. generating DeepQA score\n   $cmd \n\n";
-				   print  "15. generating DeepQA score\n   $cmd \n\n";
+				   print $OUT "4. generating DeepQA score\n   $cmd \n\n";
+				   print  "4. generating DeepQA score\n\n";
 				   $ren_return_val=system("$cmd &>> $res");
 					if ($ren_return_val)
 					{
 						$DeepQA_finishtime = time();
 						$DeepQA_diff_hrs = ($DeepQA_finishtime - $DeepQA_starttime)/3600;
-						print "15. DeepQA modeling finished within $DeepQA_diff_hrs hrs!\n\n";
+						print "4. DeepQA modeling finished within $DeepQA_diff_hrs hrs!\n\n";
 						
 						system("mv $LOG_output/DeepQA.is_running $LOG_output/DeepQA.is_finished");
 						open(TMP,">>$LOG_output/DeepQA.is_finished");
@@ -536,8 +533,8 @@ for ($i = 0; $i < @tools; $i++)
 				   $cmd = "perl $H_script/P1_generate_DeepQA_energy_feature.pl  $ren_DeepQA_features  $fasta_seq  $ren_DeepQA_features";
 				   
 				   $OUT = new FileHandle ">$res";
-				   print $OUT "15. generating DeepQA energy score\n   $cmd \n\n";
-				   print  "15. generating DeepQA energy score\n   $cmd \n\n";
+				   print $OUT "4. generating DeepQA energy score\n   $cmd \n\n";
+				   print  "4. generating DeepQA energy score\n\n";
 				   $OUT->close();
 				   system("$cmd &>> $res");
 				   `touch $dir_output/ALL_scores/$targetname.deepqa_complete`;
@@ -553,7 +550,7 @@ for ($i = 0; $i < @tools; $i++)
 			#ToDo: Check if DeepQA ran successfully			
 			$DeepQA_finishtime = time();
 			$DeepQA_diff_hrs = ($DeepQA_finishtime - $DeepQA_starttime)/3600;
-			print "15. DeepQA modeling finished within $DeepQA_diff_hrs hrs!\n\n";
+			print "4. DeepQA modeling finished within $DeepQA_diff_hrs hrs!\n\n";
 			if(-e "$LOG_output/DeepQA.is_running")
 			{
 				system("mv $LOG_output/DeepQA.is_running $LOG_output/DeepQA.is_finished");
@@ -575,21 +572,21 @@ for ($i = 0; $i < @tools; $i++)
 			
 			if(-e "$dir_output/ALL_scores/$targetname.rosetta_complete" and -d "$dir_output/ALL_scores/rosetta")
 			{
-			  print "15. $dir_output/ALL_scores/rosetta already generated! Pass\n\n";
+			  print "5. $dir_output/ALL_scores/rosetta already generated! Pass\n\n";
 			  #`cp -avr $dir_output/ALL_scores/rosetta_energy  $ren_rosetta_features`;
 			}else{
 			   $res = "$LOG_output/rosetta.is_running";
 			   $cmd = "perl $H_script/P1_run_features_for_rosetta_energy.pl $models_rosetta  $H_script/run_ProQ3_model_local.sh $targetname   $ren_rosetta_features";
 			   $OUT = new FileHandle ">$res";
-			   print $OUT "15. generating rosetta score\n   $cmd \n\n";
-			   print  "15. generating rosetta score\n   $cmd \n\n";
+			   print $OUT "5. generating rosetta score\n   $cmd \n\n";
+			   print  "5. generating rosetta score\n\n";
 			   $OUT->close();
 			   $ren_return_val=system("$cmd &>> $res");
 				if ($ren_return_val)
 				{
 					$rosetta_finishtime = time();
 					$rosetta_diff_hrs = ($rosetta_finishtime - $rosetta_starttime)/3600;
-					print "15. rosetta modeling finished within $rosetta_diff_hrs hrs!\n\n";
+					print "5. rosetta modeling finished within $rosetta_diff_hrs hrs!\n\n";
 					
 					system("mv $LOG_output/rosetta.is_running $LOG_output/rosetta.is_finished");
 					open(TMP,">>$LOG_output/rosetta.is_finished");
@@ -611,7 +608,7 @@ for ($i = 0; $i < @tools; $i++)
 			#ToDo: Check if rosetta ran successfully			
 			$rosetta_finishtime = time();
 			$rosetta_diff_hrs = ($rosetta_finishtime - $rosetta_starttime)/3600;
-			print "16. rosetta modeling finished within $rosetta_diff_hrs hrs!\n\n";
+			print "5. rosetta modeling finished within $rosetta_diff_hrs hrs!\n\n";
 			if(-e "$LOG_output/rosetta.is_running")
 			{
 				system("mv $LOG_output/rosetta.is_running $LOG_output/rosetta.is_finished");

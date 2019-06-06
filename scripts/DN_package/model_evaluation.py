@@ -126,9 +126,13 @@ def predict_local(test_list,feature_dir,model_in,model_weight_in,outputfile,logf
       
       rosetta_dir = feature_dir + '/rosetta'+'/' + targetid 
       
-      rosetta_highfile = rosetta_dir +'/' + modelid + '.pdb.features.highres.resetta.svm'
-      rosetta_lowfile = rosetta_dir +'/' + modelid + '.pdb.features.lowres.resetta.svm'
-        
+      if modelid[-4:] != '.pdb':
+            rosetta_highfile = rosetta_dir +'/' + modelid + '.pdb.features.highres.resetta.svm'
+            rosetta_lowfile = rosetta_dir +'/' + modelid + '.pdb.features.lowres.resetta.svm'
+      else:
+            rosetta_highfile = rosetta_dir +'/' + modelid + '.features.highres.resetta.svm'
+            rosetta_lowfile = rosetta_dir +'/' + modelid + '.features.lowres.resetta.svm'
+       
       if not os.path.isfile(deepQA_energy):
             print "deepQA_energy file not exists: ",deepQA_energy, " pass!"
             exit(1)           
@@ -397,8 +401,12 @@ def predict_local_global_joint(test_list,feature_dir,model_in,model_weight_in,ou
       
       rosetta_dir = feature_dir + '/rosetta'+'/' + targetid 
       
-      rosetta_highfile = rosetta_dir +'/' + modelid + '.pdb.features.highres.resetta.svm'
-      rosetta_lowfile = rosetta_dir +'/' + modelid + '.pdb.features.lowres.resetta.svm'
+      if modelid[-4:] != '.pdb':
+            rosetta_highfile = rosetta_dir +'/' + modelid + '.pdb.features.highres.resetta.svm'
+            rosetta_lowfile = rosetta_dir +'/' + modelid + '.pdb.features.lowres.resetta.svm'
+      else:
+            rosetta_highfile = rosetta_dir +'/' + modelid + '.features.highres.resetta.svm'
+            rosetta_lowfile = rosetta_dir +'/' + modelid + '.features.lowres.resetta.svm'
         
       if not os.path.isfile(deepQA_energy):
             print "deepQA_energy file not exists: ",deepQA_energy, " pass!"

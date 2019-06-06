@@ -8,9 +8,6 @@ if (@ARGV != 2) {
 $inputfile = "$ARGV[0]";#/home/jh7x3/DLS2F/DLS2F_Project/PDB_SCOP95_SEQ/Feature_data_SCOP/Feature_data_SCOP_generation/PDB_SCOP95_ss_sa_aa_not_generated_withLabel.fea 
 $outdir =  "$ARGV[1]"; # Feature_aa_ss_sa
 
-$perlscript = '/home/jh7x3/DLS2F/DLS2F_Project/DLS2F_Project_Repo/scripts/';
-
-
 open(IN,"$inputfile") || die "Failed to open file $inputfile\n";
 open(TMP,">$outdir/tmpfile") || die "Failed to open file $outdir/tmpfile\n";
 while(<IN>)

@@ -1,6 +1,6 @@
 # CNNQA
+Deep convolutional neural networks for protein model quality assessment
 
-**Deep convolutional neural networks for protein model quality assessment**
 
 Test Environment
 --------------------------------------------------------------------------------------
@@ -10,28 +10,28 @@ Test Environment
 Installation Steps
 --------------------------------------------------------------------------------------
 
-**(A) Download and Unzip DeepCovQA package**  
-Create a working directory called 'DeepCovQA' where all scripts, programs and databases will reside:
+**(A) Download and Unzip CNNQA package**  
+Create a working directory called 'CNNQA' where all scripts, programs and databases will reside:
 ```
 cd ~
-mkdir DeepCovQA
+mkdir CNNQA
 ```
-Download the DeepCovQA code:
+Download the CNNQA code:
 ```
-cd ~/DeepCovQA/
-wget http://sysbio.rnet.missouri.edu/bdm_download/DeepCovQA/DeepCovQA_source_code.tar.gz
-tar zxvf DeepCovQA_source_code.tar.gz
-mv DeepCovQA_source_code/* ./
-rm -rf DeepCovQA_source_code
+cd ~/CNNQA/
+wget http://sysbio.rnet.missouri.edu/bdm_download/CNNQA/CNNQA_source_code.tar.gz
+tar zxvf CNNQA_source_code.tar.gz
+mv CNNQA_source_code/* ./
+rm -rf CNNQA_source_code
 
 # Alternately
-git clone https://github.com/multicom-toolbox/DeepCovQA.git
+git clone https://github.com/multicom-toolbox/CNNQA.git
 ```
 
 **(B) Download software package**  
 ```
-cd ~/DeepCovQA/  
-wget http://sysbio.rnet.missouri.edu/bdm_download/DeepCovQA/tools.tar.gz
+cd ~/CNNQA/  
+wget http://sysbio.rnet.missouri.edu/bdm_download/CNNQA/tools.tar.gz
 tar -zxf tools.tar.gz
 ```
 
@@ -40,7 +40,7 @@ tar -zxf tools.tar.gz
 
 (a) Create python virtual environment (if not installed)
 ```
-cd ~/DeepCovQA/  
+cd ~/CNNQA/  
 virtualenv python_virtualenv_qa
 source python_virtualenv_qa/bin/activate
 pip install --upgrade pip
@@ -75,7 +75,7 @@ pip install h5py
 
 (e) Create keras version2
 ```
-cd ~/DeepCovQA/  
+cd ~/CNNQA/  
 virtualenv python_virtualenv_qa_keras2
 source python_virtualenv_qa_keras2/bin/activate
 pip install --upgrade pip
@@ -87,10 +87,10 @@ pip install Theano
 
 **(F) Install EMBOSS-6.6.0**  
 ```
-cd ~/DeepCovQA/
+cd ~/CNNQA/
 cd tools
 cd EMBOSS-6.6.0
-./configure --prefix=./
+./configure --prefix=/home/jh7x3/CNNQA/tools/EMBOSS-6.6.0
 make
 make install
 ```
@@ -100,7 +100,7 @@ make install
 
 (a) Update the path of Rscript in the script './configure.pl', (assume R is pre-installed)
 ```
-$R_SCRIPT="/home/tools/R-3.1.1/bin/Rscript";
+$R_SCRIPT="/home/tools/R-3.2.0/bin/Rscript";
 ```
 If you don't have "zoo" package, install it by launching R and typing install.packages("zoo")
 
@@ -111,9 +111,10 @@ $R
 >library("zoo")
 >q()
 ```
-We used R-3.1.1, which can be downloaded from https://cran.r-project.org/src/base/R-3/R-3.1.1.tar.gz
+We used R-3.2.0, which can be downloaded from https://cran.r-project.org/src/base/R-3/R-3.2.0.tar.gz
 ```
-./configure  --prefix=/home/tools/R-3.1.1  --with-readline=no --with-x=no
+cd /home/tools/R-3.2.0/
+./configure  --prefix=/home/tools/R-3.2.0  --with-readline=no --with-x=no
 make
 make insatll
 ```
@@ -121,6 +122,7 @@ make insatll
 (b) Configure software
 
 ```
+cd ~/CNNQA/ 
 perl ./configure.pl
 ```
 
@@ -128,14 +130,14 @@ perl ./configure.pl
 
 (a) Secondary structure prediction
 ```
-cd ~/DeepCovQA/  
+cd ~/CNNQA/  
 mkdir -p  test/T0709_out/aa_ss_sa
 perl ./scripts/gen_feature_multi.pl ./test/T0709.fasta   ./test/T0709_out/aa_ss_sa  ./test/T0709_out/aa_ss_sa/T0709_ss_sa.fea ./ ./tools/SCRATCH-1D_1.1/
 ```
 
 (b) Disorder prediction
 ```
-cd ~/DeepCovQA/  
+cd ~/CNNQA/  
 mkdir -p  test/T0709_out/
 perl ./scripts/P1_runpredisorder.pl ./test/T0709.fasta ./tools/predisorder1.1/bin/predict_diso.sh ./test/T0709_out/T0709.disorder
 
@@ -144,29 +146,29 @@ more ./test/T0709_out/T0709.disorder
 
 (c) PSSM prediction
 ```
-cd ~/DeepCovQA/  
+cd ~/CNNQA/  
 mkdir -p  test/T0709_out/pssm
 source python_virtualenv_qa/bin/activate
 perl ./scripts/split_fasta_to_folder.pl  ./test/T0709.fasta  ./test/T0709_out/pssm  ./test/T0709_out/pssm/PSSM.list
-python ~/DeepCovQA/scripts/run_many_sequence.py --inputfile ~/DeepCovQA/test/T0709_out/pssm//PSSM.list  --seqdir ~/DeepCovQA/test/T0709_out/pssm/ --script_dir ~/DeepCovQA/scripts/  --pspro_dir ~/DeepCovQA/tools/DeepQA/tools/pspro2/  --nr_db ~/DeepCovQA/tools/DeepQA/tools/nr/nr   --big_db ~/DeepCovQA/tools/DeepQA/tools/sspro4/data/big/big_98_X  --outputdir ~/DeepCovQA/test/T0709_out/pssm/
+python ~/CNNQA/scripts/run_many_sequence.py --inputfile ~/CNNQA/test/T0709_out/pssm//PSSM.list  --seqdir ~/CNNQA/test/T0709_out/pssm/ --script_dir ~/CNNQA/scripts/  --pspro_dir ~/CNNQA/tools/DeepQA/tools/pspro2/  --nr_db ~/CNNQA/tools/DeepQA/tools/nr/nr   --big_db ~/CNNQA/tools/DeepQA/tools/sspro4/data/big/big_98_X  --outputdir ~/CNNQA/test/T0709_out/pssm/
 ```
 
 (d) Global energy score
 
 ```
-cd ~/DeepCovQA/  
+cd ~/CNNQA/  
 mkdir -p  test/T0709_out/deepqa
-./tools/DeepQA/bin/DeepQA.sh ~/DeepCovQA/test/T0709.fasta ~/DeepCovQA/test/T0709  ~/DeepCovQA/test/T0709_out/deepqa
+./tools/DeepQA/bin/DeepQA.sh ~/CNNQA/test/T0709.fasta ~/CNNQA/test/T0709  ~/CNNQA/test/T0709_out/deepqa
 ```
 
 (e) Rosetta Energy score
 ```
 mkdir -p  test/T0709_out/rosetta
-perl ./scripts/P1_run_features_for_rosetta_energy.pl ~/DeepCovQA/test/T0709  ~/DeepCovQA/scripts/run_ProQ3_model_local.sh T0709  ~/DeepCovQA/test/T0709_out/rosetta
+perl ./scripts/P1_run_features_for_rosetta_energy.pl ~/CNNQA/test/T0709  ~/CNNQA/scripts/run_ProQ3_model_local.sh T0709  ~/CNNQA/test/T0709_out/rosetta
 ```
 
-**(I)  Run DeepCovQA**
+**(I)  Run CNNQA**
 ```
 mkdir -p  test/T0709_out
-sh bin/run_DeepCovQA.sh  T0709 ~/DeepCovQA/test/T0709.fasta ~/DeepCovQA/test/T0709  ~/DeepCovQA/test/T0709_out/
+sh bin/run_CNNQA.sh  T0709 ~/CNNQA/test/T0709.fasta ~/CNNQA/test/T0709  ~/CNNQA/test/T0709_out/
 ```

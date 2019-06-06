@@ -2,7 +2,7 @@
 
 import sys
 
-GLOBAL_PATH='/home/jh7x3/DeepCov_QA/Github/DeepCovQA/';
+GLOBAL_PATH='/home/jh7x3/bdm_github/CNNQA/';
 sys.path.insert(0, GLOBAL_PATH+'/scripts/DN_package/')
 
 

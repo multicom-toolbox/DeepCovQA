@@ -11,7 +11,7 @@ model=$1 #*.pdb
 input_dir=$2
 output_dir=${3%/}
 
-GLOBAL_PATH='/home/jh7x3/DeepCov_QA/Github/DeepCovQA/';
+GLOBAL_PATH='/home/jh7x3/bdm_github/CNNQA/';
 
 source $GLOBAL_PATH/python_virtualenv_qa_keras2/bin/activate
 export LD_LIBRARY_PATH=$GLOBAL_PATH/tools/DeepQA/libs:$LD_LIBRARY_PATH
