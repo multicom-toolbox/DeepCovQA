@@ -156,6 +156,12 @@ mkdir -p  test/T0709_out/
 perl ./scripts/P1_runpredisorder.pl ./test/T0709.fasta ./tools/predisorder1.1/bin/predict_diso.sh ./test/T0709_out/T0709.disorder
 
 more ./test/T0709_out/T0709.disorder
+
+Output:
+GCPRPRGDNPPLTCSQDSDCLAGCVCGPNGFCG
+DDDDDDDDDDDDDDDDDDDODOOODODDDDDDD
+0.844 0.752 0.854 0.792 0.731 0.618 0.631 0.607 0.592 0.56 0.524 0.537 0.522 0.504 0.53 0.571 0.522 0.512 0.512 0.435 0.501 0.412 0.322 0.163 0.507 0.481 0.527 0.539 0.57 0.622 0.623 0.58 0.695
+
 ```
 
 (c) PSSM prediction
@@ -167,6 +173,9 @@ perl ./scripts/split_fasta_to_folder.pl  ./test/T0709.fasta  ./test/T0709_out/ps
 python ~/CNNQA/scripts/run_many_sequence.py --inputfile ~/CNNQA/test/T0709_out/pssm//PSSM.list  --seqdir ~/CNNQA/test/T0709_out/pssm/ --script_dir ~/CNNQA/scripts/  --pspro_dir ~/CNNQA/tools/DeepQA/tools/pspro2/  --nr_db ~/CNNQA/tools/DeepQA/tools/nr/nr   --big_db ~/CNNQA/tools/DeepQA/tools/sspro4/data/big/big_98_X  --outputdir ~/CNNQA/test/T0709_out/pssm/
 ```
 
+```
+
+```
 (d) Global energy score
 
 ```
