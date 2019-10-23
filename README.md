@@ -137,6 +137,18 @@ mkdir -p  test/T0709_out/aa_ss_sa
 perl ./scripts/gen_feature_multi.pl ./test/T0709.fasta   ./test/T0709_out/aa_ss_sa  ./test/T0709_out/aa_ss_sa/T0709_ss_sa.fea ./ ./tools/SCRATCH-1D_1.1/
 ```
 
+```
+Examples:
+
+$ cat ./test/T0709_out/aa_ss_sa//T0709/T0709.ss
+T0709
+CCCCCECCECCCECCCHHHCCCCCEECCCCEEE
+
+$ cat ./test/T0709_out/aa_ss_sa//T0709/T0709.acc
+T0709
+e-e-eeeeeeeee-eeeee-eee-e-eeeee-e
+```
+
 (b) Disorder prediction
 ```
 cd ~/CNNQA/  
